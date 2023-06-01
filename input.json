@@ -1,9 +1,9 @@
 {	
 
 	  "TARGET": https://demo.testfire.net,
-	  "APPLICATION_NAME":"uob111",
-          "APPSCAN_CREDENTIALS_NAME":"88.P",
-          "APPSCAN_FOLDER_PATH": "ASE/AUTOMATION"
+	  "APPLICATION_NAME":"ABC_json",
+          "APPSCAN_CREDENTIALS_NAME":"ASE_cred",
+          "APPSCAN_FOLDER_PATH": "Scan/ASE/Users/ABC"
 	  "APPSCAN_TEMPLATE_NAME": "TEST01"
     	  "APPSCAN_TEST_OPTIMIZATION": "3"
  	  "APPSCAN_TEST_POLICY": "3"
