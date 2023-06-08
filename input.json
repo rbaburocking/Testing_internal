@@ -1,14 +1,14 @@
 {	
 
-	  "TARGET": https://demo.testfire.net,
+	  "TARGET": "https://demo.testfire.net",
 	  "APPLICATION_NAME":"ABC_json",
-	  "JOB_NAME": "ABC_Jenkins_Json"
+	  "JOB_NAME": "ABC_Jenkins_Json",
           "APPSCAN_CREDENTIALS_NAME":"ASE_cred",
-          "APPSCAN_FOLDER_PATH": "Scan/ASE/Users/ABC"
-	  "APPSCAN_TEMPLATE_NAME": "TEST01"
-    	  "APPSCAN_TEST_OPTIMIZATION": "3"
- 	  "APPSCAN_TEST_POLICY": "1"
- 	  "APPSCAN_SCAN_TYPE": "1"
+          "APPSCAN_FOLDER_PATH": "Scan/ASE/Users/ABC",
+	  "APPSCAN_TEMPLATE_NAME": "TEST01",
+    	  "APPSCAN_TEST_OPTIMIZATION": "3",
+ 	  "APPSCAN_TEST_POLICY": "1",
+ 	  "APPSCAN_SCAN_TYPE": "1",
 	  "TRAFFIC_FILE_TYPE": "ABC.exd",
           "LOGIN_FILE_PATH": "ABC.login"
 }
