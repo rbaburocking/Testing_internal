@@ -2,7 +2,7 @@
 
 	  "TARGET": "https://demo.testfire.net",
 	  "APPLICATION_NAME":"ABC_json",
-	  "JOB_NAME": "ABC_Jenkins_Json",
+	  "JOB_NAME": "ABC_Jenkins_Json_new",
           "APPSCAN_CREDENTIALS_NAME":"ASEMAIN",
           "APPSCAN_FOLDER_PATH": "ASE/Users/ABC",
 	  "APPSCAN_TEMPLATE_NAME": "ABC",
