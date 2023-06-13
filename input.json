@@ -4,7 +4,7 @@
 	  "APPLICATION_NAME":"ABC_json",
 	  "JOB_NAME": "ABC_Jenkins_Json_new",
           "APPSCAN_CREDENTIALS_NAME":"ASEMAIN",
-          "APPSCAN_FOLDER_PATH": "Scans/ASE/Users/appscanadmin",
+          "APPSCAN_FOLDER_PATH": "ASE/Applications/ABC",
 	  "APPSCAN_TEMPLATE_NAME": "ABC",
     	  "APPSCAN_TEST_OPTIMIZATION": "3",
  	  "APPSCAN_TEST_POLICY": "1",
