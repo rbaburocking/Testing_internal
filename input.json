@@ -9,6 +9,6 @@
     	  "APPSCAN_TEST_OPTIMIZATION": "3",
  	  "APPSCAN_TEST_POLICY": "1",
  	  "APPSCAN_SCAN_TYPE": "1",
-	  "TRAFFIC_FILE_TYPE": "ABC.exd",
-          "LOGIN_FILE_PATH": "ABC.login"
+	  "TRAFFIC_FILE_TYPE": "\ABC.exd",
+          "LOGIN_FILE_PATH": "\ABC.login"
 }
