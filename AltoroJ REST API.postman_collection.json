@@ -1,0 +1,1831 @@
+{
+	"info": {
+		"_postman_id": "1059dd81-c9f2-470c-a4fc-d9e3e2fe1f26",
+		"name": "AltoroJ REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "Check if any user is logged in",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "If a user is loggedin the username will be returned"
+					},
+					"response": [
+						{
+							"name": "Logged in",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Logged out",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Login method",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jsmith\",\n    \"password\": \"demo1234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "After a successful login a token is returned. This is a Bearer token. To authenticate with it use the Authorization header and set value to Bearer empty space and the token value."
+					},
+					"response": [
+						{
+							"name": "Success message when login is complete",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jsmith\",\n    \"password\": \"demo1234\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad parameters: Please check provided values",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jsmith\",\n    \"password\": \"demo1234\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal server error: Please see error message or logs for details",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jsmith\",\n    \"password\": \"demo1234\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "{account No}",
+					"item": [
+						{
+							"name": "transactions",
+							"item": [
+								{
+									"name": "show Last Ten Transactions",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) Authorization token (provided upon successful login)",
+												"key": "Authorization",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/account/:accountNo/transactions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"account",
+												":accountNo",
+												"transactions"
+											],
+											"variable": [
+												{
+													"key": "accountNo",
+													"value": "<string>",
+													"description": "(Required) Account id"
+												}
+											]
+										},
+										"description": "Returns the last 10 transactions attached to an account"
+									},
+									"response": [
+										{
+											"name": "Unauthorized request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Successful operation",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "get Transactions",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) Authorization token (provided upon successful login)",
+												"key": "Authorization",
+												"value": "<string>"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/account/:accountNo/transactions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"account",
+												":accountNo",
+												"transactions"
+											],
+											"variable": [
+												{
+													"key": "accountNo",
+													"value": "<string>",
+													"description": "(Required) Account id"
+												}
+											]
+										},
+										"description": "Return transactions between 2 specific dates"
+									},
+									"response": [
+										{
+											"name": "Successful operation",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"startDate\": \"2012-03-12\",\n    \"endDate\": \"2012-03-17\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal server error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"startDate\": \"2012-03-12\",\n    \"endDate\": \"2012-03-17\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "Not Implemented",
+											"code": 501,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad parameters: Please check provided values",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"startDate\": \"2012-03-12\",\n    \"endDate\": \"2012-03-17\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Unauthorized request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) Authorization token (provided upon successful login)",
+														"key": "Authorization",
+														"value": "<string>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"startDate\": \"2012-03-12\",\n    \"endDate\": \"2012-03-17\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/account/:accountNo/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"account",
+														":accountNo",
+														"transactions"
+													],
+													"variable": [
+														{
+															"key": "accountNo"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get Account Balance",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account/:accountNo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account",
+										":accountNo"
+									],
+									"variable": [
+										{
+											"key": "accountNo",
+											"value": "{{AccountId}}",
+											"description": "(Required) Account id"
+										}
+									]
+								},
+								"description": "Returns details about a specific account"
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) Authorization token (provided upon successful login)",
+												"key": "Authorization",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/account/:accountNo",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"account",
+												":accountNo"
+											],
+											"variable": [
+												{
+													"key": "accountNo"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) Authorization token (provided upon successful login)",
+												"key": "Authorization",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/account/:accountNo",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"account",
+												":accountNo"
+											],
+											"variable": [
+												{
+													"key": "accountNo"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) Authorization token (provided upon successful login)",
+												"key": "Authorization",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/account/:accountNo",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"account",
+												":accountNo"
+											],
+											"variable": [
+												{
+													"key": "accountNo"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get Account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account"
+							]
+						},
+						"description": "Returns a list of all the accounts owned by the user"
+					},
+					"response": [
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal server error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "feedback",
+			"item": [
+				{
+					"name": "send Feedback",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"myname\",\n    \"email\": \"abcemail@abc.com\",\n    \"subject\": \"Hi\",\n    \"message\": \"Hello\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/feedback/submit",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"feedback",
+								"submit"
+							]
+						},
+						"description": "Submit feedback for the bank"
+					},
+					"response": [
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"J Smith\",\n    \"email\": \"jsmtih@altoromutual.com\",\n    \"subject\": \"Amazing web design\",\n    \"message\": \"I like the new look of your applicaiton\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/feedback/submit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										"submit"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"J Smith\",\n    \"email\": \"jsmtih@altoromutual.com\",\n    \"subject\": \"Amazing web design\",\n    \"message\": \"I like the new look of your applicaiton\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/feedback/submit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										"submit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal server error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"J Smith\",\n    \"email\": \"jsmtih@altoromutual.com\",\n    \"subject\": \"Amazing web design\",\n    \"message\": \"I like the new look of your applicaiton\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/feedback/submit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										"submit"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "get Feedback",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/feedback/:feedbackId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"feedback",
+								":feedbackId"
+							],
+							"variable": [
+								{
+									"key": "feedbackId",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Retrieve feedback"
+					},
+					"response": [
+						{
+							"name": "Bad parameters: Please check provided values",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feedback/:feedbackId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										":feedbackId"
+									],
+									"variable": [
+										{
+											"key": "feedbackId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal server error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feedback/:feedbackId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										":feedbackId"
+									],
+									"variable": [
+										{
+											"key": "feedbackId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feedback/:feedbackId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										":feedbackId"
+									],
+									"variable": [
+										{
+											"key": "feedbackId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feedback/:feedbackId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feedback",
+										":feedbackId"
+									],
+									"variable": [
+										{
+											"key": "feedbackId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "<string>"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"<string>\",\n    \"lastname\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password1\": \"<password>\",\n    \"password2\": \"<password>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/addUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"addUser"
+							]
+						},
+						"description": "Add new user"
+					},
+					"response": [
+						{
+							"name": "Error creating user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstname\": \"Bilbo\",\n    \"lastname\": \"Baggins\",\n    \"username\": \"bilbob\",\n    \"password1\": \"S3l3ctS0methingStr0ng5AsP@ssword\",\n    \"password2\": \"S3l3ctS0methingStr0ng5AsP@ssword\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/addUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"addUser"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstname\": \"Bilbo\",\n    \"lastname\": \"Baggins\",\n    \"username\": \"bilbob\",\n    \"password1\": \"S3l3ctS0methingStr0ng5AsP@ssword\",\n    \"password2\": \"S3l3ctS0methingStr0ng5AsP@ssword\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/addUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"addUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstname\": \"Bilbo\",\n    \"lastname\": \"Baggins\",\n    \"username\": \"bilbob\",\n    \"password1\": \"S3l3ctS0methingStr0ng5AsP@ssword\",\n    \"password2\": \"S3l3ctS0methingStr0ng5AsP@ssword\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/addUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"addUser"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstname\": \"Bilbo\",\n    \"lastname\": \"Baggins\",\n    \"username\": \"bilbob\",\n    \"password1\": \"S3l3ctS0methingStr0ng5AsP@ssword\",\n    \"password2\": \"S3l3ctS0methingStr0ng5AsP@ssword\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/addUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"addUser"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "<string>"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"<string>\",\n    \"password2\": \"<password>\",\n    \"password1\": \"<password>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/changePassword",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"changePassword"
+							]
+						},
+						"description": "Change user password"
+					},
+					"response": [
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jdoe\",\n    \"password2\": \"Th1s!sz3nu3Passv0rd\",\n    \"password1\": \"Th1s!sz3nu3Passv0rd\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/changePassword",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"changePassword"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error in changing the username password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jdoe\",\n    \"password2\": \"Th1s!sz3nu3Passv0rd\",\n    \"password1\": \"Th1s!sz3nu3Passv0rd\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/changePassword",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"changePassword"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jdoe\",\n    \"password2\": \"Th1s!sz3nu3Passv0rd\",\n    \"password1\": \"Th1s!sz3nu3Passv0rd\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/changePassword",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"changePassword"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) Authorization token (provided upon successful login)",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"jdoe\",\n    \"password2\": \"Th1s!sz3nu3Passv0rd\",\n    \"password1\": \"Th1s!sz3nu3Passv0rd\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/changePassword",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"changePassword"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "trasnfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "(Required) Authorization token (provided upon successful login)",
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"toAccount\": \"800002\",\n    \"fromAccount\": \"800004\",\n    \"transferAmount\": \"8888\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/transfer",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transfer"
+					]
+				},
+				"description": "Transfer money between two accounts"
+			},
+			"response": [
+				{
+					"name": "Bad parameters: Please check provided values",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "<string>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"toAccount\": \"800002\",\n    \"fromAccount\": \"800003\",\n    \"transferAmount\": \"200\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transfer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "<string>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"toAccount\": \"800002\",\n    \"fromAccount\": \"800003\",\n    \"transferAmount\": \"200\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transfer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Internal server error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) Authorization token (provided upon successful login)",
+								"key": "Authorization",
+								"value": "<string>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"toAccount\": \"800002\",\n    \"fromAccount\": \"800003\",\n    \"transferAmount\": \"200\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transfer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"status": "Not Implemented",
+					"code": 501,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "do Log Out",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/logout",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Logout from the bank"
+			},
+			"response": [
+				{
+					"name": "Successful operation",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unauthorized request ",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
