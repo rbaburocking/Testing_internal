@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project default_configuration_name="Configuration 1" fallback_default_config_name="Configuration 1" file_encoding="ISO-8859-1" jsp_compiler_info_name="Tomcat 9" jsp_compiler_type="14" ltd_name="java" name="AltoroJ_3.2_Compile" version="10.2.0" web_context_root_path=".\WebContent">
+	<Configuration name="Configuration 1"/>
+	<Source exclude="false" path="." web="false"/>
+	<Source exclude="false" path=".\WebContent" web="true"/>
+	<ProjectScanSettings/>
+</Project>
