@@ -1,7 +1,7 @@
 {	
 
 	  "TARGET": "https://demo.testfire.net",
-	  "APPLICATION_NAME":"AltoroJ_Jenkins",
+	  "APPLICATION_NAME":"Rebit_demo",
 	  "JOB_NAME": "ABC_Jenkins_Json_final8",
           "APPSCAN_CREDENTIALS_NAME":"ASEMAIN",
           "APPSCAN_FOLDER_PATH": "ASE/Users/appscanadmin",
